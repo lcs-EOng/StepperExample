@@ -8,9 +8,13 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: Stored properties
+    @State var base: Int = 1
 
     
     // MARK: Computed properties
+    var squared: Int{
+        return base * base
+    }
     var body: some View {
         VStack {
             
@@ -18,7 +22,7 @@ struct ContentView: View {
             
             HStack(alignment: .top) {
 
-                Text("5")
+                Text("\(base)")
                     .font(.system(size: 96))
 
                 Text("2")
@@ -27,9 +31,13 @@ struct ContentView: View {
                 Text("=")
                     .font(.system(size: 96))
 
-                Text("25")
+                Text("\(squared)")
                     .font(.system(size: 96))
             }
+            
+            Stepper(value: $base, label:{
+                Text("Base")
+            })
                         
             Spacer()
         }
